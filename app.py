@@ -80,7 +80,7 @@ def api_signup():
         "uid": new_user.username,
     }
 
-    req_url = "https://gfxb0jf19k.execute-api.ap-south-1.amazonaws.com/prod/onboarding"
+    req_url = "https://auth.addchat.tech/dev/onboarding"
 
     headers = {
         "Accept": "*/*",
@@ -94,6 +94,7 @@ def api_signup():
         "tenant_id": tezkit_app_p_data["tenant_id"],
         "uid": user_data["uid"],
         "app_name": tezkit_app_p_data["app_name"],
+        "version":"V2"
     }
 
     # try:
