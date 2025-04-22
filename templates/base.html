@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}My Website{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <header class="my-header">
+      <div class="navbar">
+        <div class="logo">
+          <img src="static/images/logo.png" alt="Logo" />
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li id="login-signup-link">
+              <a href="{{ url_for('login') }}">Login</a>
+            </li>
+            <li id="signup-link">
+              <a href="{{ url_for('signup') }}">Signup</a>
+            </li>
+            <li id="logout-link" style="display: none">
+              <a href="#" onclick="logout()">Logout</a>
+            </li>
+            <li><a href="{{ url_for('products') }}">Products</a></li>
+            <li><a href="{{ url_for('profile_page') }}">Profile</a></li>
+          </ul>
+        </nav>
+        <span class="burger-icon">&#9776;</span>
+      </div>
+    </header>
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About Us</h4>
+          <p>
+            We are a leading provider of technology solutions with a focus on
+            innovation and customer satisfaction.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('signup') }}">Signup</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Follow Us</h4>
+          <ul class="social-links">
+            <li><a href="#" target="_blank">Facebook</a></li>
+            <li><a href="#" target="_blank">Twitter</a></li>
+            <li><a href="#" target="_blank">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2024 My Website. All rights reserved.
+          <a href="#">Privacy Policy</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script>
+      // Check if the user is logged in by checking for the token in local storage
+      window.onload = function () {
+        var token = localStorage.getItem("token");
+        if (token) {
+          // Show Logout and hide Login/Signup if the token is present
+          document.getElementById("login-signup-link").style.display = "none";
+          document.getElementById("signup-link").style.display = "none";
+          document.getElementById("logout-link").style.display = "inline-block";
+        } else {
+          // Show Login/Signup and hide Logout if the token is not present
+          document.getElementById("login-signup-link").style.display =
+            "inline-block";
+          document.getElementById("signup-link").style.display = "inline-block";
+          document.getElementById("logout-link").style.display = "none";
+        }
+      };
+
+      // Handle Logout
+      function logout() {
+        
+        window.chathead.logout() // to singal clean up correct way
+        localStorage.removeItem("token");
+
+        // Redirect to homepage or login page after logout
+        window.location.href = "{{ url_for('home') }}"; // Or use another page if needed
+      }
+    </script>
+
+    <script src="{{ url_for('static', filename='js/node_modules/chathead-consumer-client/dist/bundle.js') }}"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        try {
+          const token = localStorage.getItem("token");
+          if (!token) {
+            // alert("You are not logged in!");
+
+            // Properly set up the `chathead` object with parameters
+            console.log("dowesee this running?", window.chathead);
+            window.chathead.setUp(
+              (app_name = "v2app1"),
+              (api_key = "amV3ZWxlcnlraW5nX19TRVBSQVRPUl9fdjJhcHAx"),
+              (theme = JSON.stringify({
+                header_theme: {
+                  backgroundColor: "rgb(163, 112, 206)",
+                  textColor: "white",
+                },
+                chat_opener_theme: {
+                  backgroundColor: "rgb(163, 112, 206)",
+                  textColor: "white",
+                },
+                chat_box_theme: {
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  textColor: "white",
+                },
+              })),
+              (header_req = undefined),
+              (redirect_uri = undefined)
+            );
+          }
+          
+         
+        } catch (error) {
+          console.error(
+            "An error occurred while setting up the chat or redirecting:",
+            error
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

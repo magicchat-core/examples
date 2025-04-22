@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% block title %}Profile{% endblock %} {% block
+content %}
+<h1>Profile</h1>
+<div id="profileDetails"></div>
+
+<script>
+  // Declare the `profileData` variable in the global scope
+  let profileData;
+
+  async function loadProfile() {
+    const token = localStorage.getItem("token");
+
+    try {
+      if (token) {
+        const response = await fetch("/api/profile", {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (response.ok) {
+          profileData = await response.json(); // Assign profile data to the global variable
+
+          console.log("profileDatadsfsdfs", profileData);
+          document.getElementById("profileDetails").innerHTML = `
+                      <p>Username: ${profileData.username}</p>
+                      <p>Email: ${profileData.email}</p>
+                  `;
+
+          console.log("profileData:", profileData);
+        } else {
+          alert("Failed to load profile!. Please login again.");
+          window.location.href = "/login";
+        }
+      } else {
+        alert("Failed to load profile. Please login again.");
+        window.location.href = "/login";
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+
+  function handleProfileData() {
+    // Access profileData safely after it has been loaded
+    console.log("Accessing profileData:", profileData.uid);
+
+    // Additional operations can go here
+  }
+
+  // Ensure the DOM is fully loaded before executing
+  document.addEventListener("DOMContentLoaded", async function () {
+    loadProfile(); // Fetch the profile data after DOM is ready
+  });
+</script>
+
+{% endblock %}

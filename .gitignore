@@ -1,2 +1,7 @@
-package.json
-node_modules
+.venv
+static/js/node_modules
+/static/js/node_modules
+products.db
+/products.db
+./products.db
+products.db
