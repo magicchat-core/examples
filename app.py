@@ -71,9 +71,9 @@ def api_signup():
 
     # Replace with your actual data
     tezkit_app_p_data = {
-        "auth_key": "amV3ZWxlcnlraW5nX19TRVBSQVRPUl9fdjJhcHAx",
-        "tenant": "jeweleryking",
-        "tenant_id": "1",
+        "auth_key": "cmFqX2FkbWluX19TRVBSQVRPUl9fdjJhcHAx",
+        "tenant": "raj_admin",
+        "tenant_id": "4",
         "app_name": "v2app1",
     }
     user_data = {
