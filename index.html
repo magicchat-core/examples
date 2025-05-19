@@ -10,7 +10,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <script src="https://cdn.socket.io/4.1.2/socket.io.min.js"></script>
-    <script src="node_modules/chathead-consumer-client/dist/bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/magicchat-core/dev-ssc-client-cdns@v0.1.6/bundle.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", async function () {
         const token = localStorage.getItem("tezkit_token");
@@ -18,8 +18,8 @@
           window.chathead.initialize(token);
         } else { 
           window.chathead.setUp(
-            "v2app2", 
-            "bGVnYWxzdXBwb3J0X19TRVBSQVRPUl9fdjJhcHAy", 
+            "myv2app1", 
+            "ZGphbmdvYm95X19TRVBSQVRPUl9fbXl2MmFwcDE=", 
             JSON.stringify({
                 "header_theme": {
                     "backgroundColor": "rgb(163, 112, 206)",
