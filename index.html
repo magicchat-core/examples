@@ -13,13 +13,14 @@
     <script src="node_modules/chathead-consumer-client/dist/bundle.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", async function () {
-        const token = localStorage.getItem("tezkit_token");
+        // const token = localStorage.getItem("tezkit_token");
+        let token = null
         if (token) {
           window.chathead.initialize(token);
         } else { 
           window.chathead.setUp(
-            "v1app1", 
-            "ZGphbmdvYm95X19TRVBSQVRPUl9fdjFhcHAx", 
+            "myveryfirstv4", 
+            "ZGphbmdvYm95X19TRVBSQVRPUl9fbXl2ZXJ5Zmlyc3R2NA==", 
             JSON.stringify({
                 "header_theme": {
                     "backgroundColor": "rgb(163, 112, 206)",
@@ -37,6 +38,25 @@
             false, // for HEADLESS MODE
             "/index.html"
           );
+        
+          function generate10CharTextString() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            let result = '';
+            for (let i = 0; i < 10; i++) {
+              const randomIndex = Math.floor(Math.random() * characters.length);
+              result += characters[randomIndex];
+            }
+            return result;
+          }
+
+          const textString = generate10CharTextString();
+          console.log(textString); // Example output: "AbcXyzPqLm"
+
+
+          token = {uid: "VU-"+textString}
+          window.chathead.initialize(token);
+
+        
         }
       });
     </script>
