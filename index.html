@@ -18,7 +18,7 @@
         if (token) {
           window.chathead.initialize(token);
         } else { 
-          window.chathead.setUp(
+          await window.chathead.setUp(
             "myveryfirstv4", 
             "ZGphbmdvYm95X19TRVBSQVRPUl9fbXl2ZXJ5Zmlyc3R2NA==", 
             JSON.stringify({
@@ -38,7 +38,6 @@
             false, // for HEADLESS MODE
             "/index.html"
           );
-        
           function generate10CharTextString() {
             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
             let result = '';
@@ -48,13 +47,15 @@
             }
             return result;
           }
-
+          console.log("somethingsdfdsfsdf?",localStorage.getItem("tezkit_app_data"))
           const textString = generate10CharTextString();
           console.log(textString); // Example output: "AbcXyzPqLm"
 
 
           token = {uid: "VU-"+textString}
           window.chathead.initialize(token);
+          console.log("us tgerwer?dssdf")
+
 
         
         }
