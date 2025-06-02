@@ -110,17 +110,54 @@
     <script src="{{ url_for('static', filename='js/node_modules/chathead-consumer-client/dist/bundle.js') }}"></script>
 
     <script>
+
+async function getUuidUserData() {
+    let profileData;
+
+    const token = localStorage.getItem("token");
+    if (!token){
+
+      alert("Failed to load profile. Please login again.");
+      window.location.href = "/login";
+      
+    }
+    try {
+      if (token) {
+        const response = await fetch("/api/profile", {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (response.ok) {
+          profileData = await response.json(); // Assign profile data to the global variable
+          console.log("profileData:", profileData);
+          return profileData
+         
+         
+        } else {
+          alert("Failed to load profile!. Please login again.");
+          window.location.href = "/login";
+        }
+      } 
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+
+
+
       document.addEventListener("DOMContentLoaded", async () => {
         try {
           const token = localStorage.getItem("token");
           if (!token) {
+          console.log("user is logged in is it ocuring multiple times?2222")
+
             // alert("You are not logged in!");
 
             // Properly set up the `chathead` object with parameters
             console.log("dowesee this running?", window.chathead);
             window.chathead.setUp(
-              (app_name = "myv2app1"),
-              (api_key = "ZGphbmdvYm95X19TRVBSQVRPUl9fbXl2MmFwcDE="),
+              (app_name = "v2app1"),
+              (api_key = "amV3ZWxlcnlraW5nX19TRVBSQVRPUl9fdjJhcHAx"),
               (theme = JSON.stringify({
                 header_theme: {
                   backgroundColor: "rgb(163, 112, 206)",
@@ -140,7 +177,17 @@
             );
           }
           
-         
+         else{
+          console.log("user is logged in is it ocuring multiple times?")
+
+          const profileData = await getUserUuidData(); 
+          if (profileData){
+
+            window.chathead.initialize({ //Once we have any unique id for the loggedin user we can initialize AddChat.
+                  uid: profileData.username,
+                });
+          }
+         }
         } catch (error) {
           console.error(
             "An error occurred while setting up the chat or redirecting:",

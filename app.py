@@ -71,10 +71,10 @@ def api_signup():
 
     # Replace with your actual data
     tezkit_app_p_data = {
-        "auth_key": "ZGphbmdvYm95X19TRVBSQVRPUl9fbXl2MmFwcDE=",
-        "tenant": "djangoboy",
+        "auth_key": "amV3ZWxlcnlraW5nX19TRVBSQVRPUl9fdjJhcHAx",
+        "tenant": "jeweleryking",
         "tenant_id": "1",
-        "app_name": "myv2app1",
+        "app_name": "v2app1",
     }
     user_data = {
         "uid": new_user.username,
