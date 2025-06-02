@@ -18,52 +18,6 @@
   </div>
 </div>
 
-<!-- <script>
-  // Declare the `getUserUuidData` variable in the global scope
 
-  async function loadProfile() {
-    let getUserUuidData;
-
-    const token = localStorage.getItem("token");
-    if (!token){
-
-      alert("Failed to load profile. Please login again.");
-      window.location.href = "/login";
-      
-    }
-    try {
-      if (token) {
-        const response = await fetch("/api/profile", {
-          method: "GET",
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        if (response.ok) {
-          getUserUuidData = await response.json(); // Assign profile data to the global variable
-          console.log("getUserUuidData:", getUserUuidData);
-          return getUserUuidData
-         
-         
-        } else {
-          alert("Failed to load profile!. Please login again.");
-          window.location.href = "/login";
-        }
-      } 
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
-
-  
-  // Ensure the DOM is fully loaded before executing
-  document.addEventListener("DOMContentLoaded", async function () {
-    const getUserUuidData = await loadProfile(); 
-    if (getUserUuidData){
-
-      window.chathead.initialize({ //Once we have any unique id for the loggedin user we can initialize AddChat.
-            uid: getUserUuidData.username,
-          });
-    }
-  });
-</script> -->
 
 {% endblock %}
