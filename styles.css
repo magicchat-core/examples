@@ -284,3 +284,25 @@ html {
 .footer-bottom a:hover {
   text-decoration: underline;
 }
+
+
+.skeleton-text {
+  display: inline-block;
+  background-color: #ccc;
+  border-radius: 4px;
+  height: 1em;
+  min-width: 60px;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #ccc;
+  }
+  50% {
+    background-color: #ddd;
+  }
+  100% {
+    background-color: #ccc;
+  }
+}
