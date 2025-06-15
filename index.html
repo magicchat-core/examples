@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Generic Product Website</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="skeletonStyle.css" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -16,23 +18,23 @@
         const token = localStorage.getItem("tezkit_token");
         if (token) {
           window.chathead.initialize(token);
-        } else { 
+        } else {
           window.chathead.setUp(
-            "CandleApp", 
-            "VGhlQ29kZXJfX1NFUFJBVE9SX19DYW5kbGVBcHA=", 
+            "CandleApp",
+            "VGhlQ29kZXJfX1NFUFJBVE9SX19DYW5kbGVBcHA=",
             JSON.stringify({
-                "header_theme": {
-                    "backgroundColor": "rgb(163, 112, 206)",
-                    "textColor": "white"
-                },
-                "chat_opener_theme": {
-                    "backgroundColor": "rgb(163, 112, 206)",
-                    "textColor": "white"
-                },
-                "chat_box_theme": {
-                    "backgroundColor": "red",
-                    "textColor": "black"
-                }
+              header_theme: {
+                backgroundColor: "rgb(163, 112, 206)",
+                textColor: "white",
+              },
+              chat_opener_theme: {
+                backgroundColor: "rgb(163, 112, 206)",
+                textColor: "white",
+              },
+              chat_box_theme: {
+                backgroundColor: "red",
+                textColor: "black",
+              },
             }),
             false, // for HEADLESS MODE
             "/index.html"
@@ -42,13 +44,15 @@
       });
     </script>
     <script src="./index.js"></script>
-
   </head>
   <body>
     <header class="header">
       <nav class="navbar">
         <div class="logo">
-          <img src="https://archive.org/download/placeholder-image/placeholder-image.jpg" alt="logo" />
+          <img
+            src="https://archive.org/download/placeholder-image/placeholder-image.jpg"
+            alt="logo"
+          />
         </div>
         <div class="logo">
           <div>Simple Site Examples</div>
@@ -63,156 +67,199 @@
             <li><a href="#products">Products</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-          <div id="tezkit-auth-area" style="min-width: 200px;"> </div>
-
-
-          
+          <div id="tezkit-auth-area" style="min-width: 200px"></div>
         </div>
       </nav>
     </header>
-    
 
-    <main>
-      <section id="intro" class="banner-section">
-        <div class="banner">
-          <img
-            src="https://archive.org/download/placeholder-image/placeholder-image.jpg"
-            alt="Placeholder Banner"
-            class="hero-image"
-          />
-        </div>
-        <div class="text-overlay">
-          <div class="content">
-            <h2>Discover Our Amazing Products</h2>
+    <div class="contentWrap">
+      <main>
+        <section id="intro" class="banner-section">
+          <div class="banner">
+            <img
+              src="https://archive.org/download/placeholder-image/placeholder-image.jpg"
+              alt="Placeholder Banner"
+              class="hero-image"
+            />
+          </div>
+          <div class="text-overlay">
+            <div class="content is-loading">
+              <h2>Discover Our Amazing Products</h2>
+              <p>
+                Explore our wide range of innovative and high-quality products
+                designed to meet your needs. Experience excellence and
+                reliability with every purchase.
+              </p>
+              <button class="btn">Learn More</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="products" class="product-section">
+          <h3>Our Products</h3>
+
+          <div class="product-grid">
+            <div class="cards">
+              <div class="card is-loading">
+                <div class="image"></div>
+                <div class="content">
+                  <h2></h2>
+                  <p></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="cards">
+              <div class="card is-loading">
+                <div class="image"></div>
+                <div class="content">
+                  <h2></h2>
+                  <p></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="cards">
+              <div class="card is-loading">
+                <div class="image"></div>
+                <div class="content">
+                  <h2></h2>
+                  <p></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="about-section">
+          <h3>About Us</h3>
+          <div class="about-content is-loading">
+            <img
+              src="https://archive.org/download/placeholder-image/placeholder-image.jpg"
+              alt="About Us Image"
+            />
+
+            <div class="text">
+              <h2>Who We Are</h2>
+              <p>
+                We are a passionate team of professionals dedicated to creating
+                innovative products that make life easier and more enjoyable.
+                Our company was founded with the mission to provide
+                high-quality, reliable products that cater to a wide variety of
+                needs. With a focus on excellence and customer satisfaction, we
+                aim to be a leader in our industry.
+              </p>
+              <div class="listItem">
+                <h4>Our Values</h4>
+                <ul>
+                  <li>
+                    Customer Satisfaction: We put our customers at the center of
+                    everything we do.
+                  </li>
+                  <li>
+                    Innovation: Constantly exploring new ways to improve our
+                    products and services.
+                  </li>
+                  <li>
+                    Integrity: We conduct our business with honesty and
+                    transparency.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+          <h3>Contact Us</h3>
+          <div class="contact-content">
+            <div class="contact-info">
+              <h4>Our Office</h4>
+              <p>
+                <strong>Generic Company</strong><br />
+                123 Main Street, Anytown, USA<br />
+                Phone: (123) 456-7890<br />
+                Email: contact@genericcompany.com
+              </p>
+            </div>
+            <div class="contact-form">
+              <h4>Get In Touch</h4>
+              <form>
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required />
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" required />
+
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                ></textarea>
+
+                <button type="submit" class="btn">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>Contact Us</h4>
+            <p><strong>Generic Company</strong></p>
+            <p>123 Main Street, Anytown, USA</p>
+            <p>Phone: (123) 456-7890</p>
+          </div>
+
+          <div class="footer-section">
+            <h4>Business Hours</h4>
+            <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+          </div>
+
+          <div class="footer-section">
+            <h4>Disclaimer</h4>
             <p>
-              Explore our wide range of innovative and high-quality products designed to meet your needs. Experience excellence and reliability with every purchase.
+              The content on this website is for informational purposes only and
+              does not constitute a guarantee of product performance. Please
+              contact us for more details.
             </p>
-            <button class="btn">Learn More</button>
           </div>
-        </div>
-      </section>
 
-      <section id="products" class="product-section">
-        <h3>Our Products</h3>
-        <div class="product-grid">
-          <div class="product-box" style="background-image: url('https://via.placeholder.com/300x250');">
-            <div class="info">
-              <h4>Product 1</h4>
-              <p>Amazing features and benefits</p>
-            </div>
-          </div>
-          <div class="product-box" style="background-image: url('https://via.placeholder.com/300x250');">
-            <div class="info">
-              <h4>Product 2</h4>
-              <p>Top-notch quality guaranteed</p>
-            </div>
-          </div>
-          <div class="product-box" style="background-image: url('https://via.placeholder.com/300x250');">
-            <div class="info">
-              <h4>Product 3</h4>
-              <p>Innovation at its best</p>
-            </div>
-          </div>
-          <div class="product-box" style="background-image: url('https://via.placeholder.com/300x250');">
-            <div class="info">
-              <h4>Product 4</h4>
-              <p>Reliable and efficient</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" class="about-section">
-        <h3>About Us</h3>
-        <div class="about-content">
-          <img src="https://via.placeholder.com/500x300" alt="About Us Image" />
-          <div class="text">
-            <h4>Who We Are</h4>
-            <p>
-              We are a passionate team of professionals dedicated to creating innovative products that make life easier and more enjoyable. Our company was founded with the mission to provide high-quality, reliable products that cater to a wide variety of needs. With a focus on excellence and customer satisfaction, we aim to be a leader in our industry.
-            </p>
-            <h4>Our Values</h4>
-            <ul>
-              <li>Customer Satisfaction: We put our customers at the center of everything we do.</li>
-              <li>Innovation: Constantly exploring new ways to improve our products and services.</li>
-              <li>Integrity: We conduct our business with honesty and transparency.</li>
+          <div class="footer-section">
+            <h4>Stay Connected</h4>
+            <ul class="social-links">
+              <li>
+                <a href="#" target="_blank"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+              </li>
+              <li>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+              </li>
+              <li>
+                <a href="#" target="_blank"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+              </li>
             </ul>
           </div>
         </div>
-      </section>
 
-      <section id="contact" class="contact-section">
-        <h3>Contact Us</h3>
-        <div class="contact-content">
-          <div class="contact-info">
-            <h4>Our Office</h4>
-            <p>
-              <strong>Generic Company</strong><br />
-              123 Main Street, Anytown, USA<br />
-              Phone: (123) 456-7890<br />
-              Email: contact@genericcompany.com
-            </p>
-          </div>
-          <div class="contact-form">
-            <h4>Get In Touch</h4>
-            <form>
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" required />
-
-              <label for="email">Your Email</label>
-              <input type="email" id="email" name="email" required />
-
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="4" required></textarea>
-
-              <button type="submit" class="btn">Send Message</button>
-            </form>
-          </div>
+        <div class="footer-bottom">
+          <p class="copyright">
+            &copy; 2024 Generic Company. All Rights Reserved. | Designed by
+            <a href="#">YourName</a>
+          </p>
         </div>
-      </section>
-
-      
-      
-    </main>
-
-
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h4>Contact Us</h4>
-          <p><strong>Generic Company</strong></p>
-          <p>123 Main Street, Anytown, USA</p>
-          <p>Phone: (123) 456-7890</p>
-        </div>
-    
-        <div class="footer-section">
-          <h4>Business Hours</h4>
-          <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-        </div>
-    
-        <div class="footer-section">
-          <h4>Disclaimer</h4>
-          <p>The content on this website is for informational purposes only and does not constitute a guarantee of product performance. Please contact us for more details.</p>
-        </div>
-    
-        <div class="footer-section">
-          <h4>Stay Connected</h4>
-          <ul class="social-links">
-            <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    
-      <div class="footer-bottom">
-        <p class="copyright">
-          &copy; 2024 Generic Company. All Rights Reserved. | Designed by <a href="#">YourName</a>
-        </p>
-      </div>
-    </footer>
-    
+      </footer>
+    </div>
 
     <script>
       const burgerIcon = document.querySelector(".burger-icon");
@@ -228,10 +275,9 @@
         const clickOutsideNav =
           rightNav.contains(e.target) || burgerIcon.contains(e.target);
         if (!clickOutsideNav) {
-          if (rightNav.style.display){
+          if (rightNav.style.display) {
             rightNav.style.display = "none";
-
-          } 
+          }
         }
       });
     </script>
